@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1beta1 # for versions before 1.14 use extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nop-commerce-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - host: {{ .Values.cust1.domain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Values.cust1.serviceName }}
+          servicePort: 80 #this s/b the port of the service
+  - host: {{ .Values.cust2.domain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Values.cust2.serviceName }}
+          servicePort: 80 #this s/b the port of the service
+  - host: {{ .Values.cust3.domain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Values.cust3.serviceName }}
+          servicePort: 80 #this s/b the port of the service
