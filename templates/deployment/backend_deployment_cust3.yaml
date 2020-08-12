@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.cust3.appName }}
+  labels:
+    app: {{ .Values.cust3.appName }}
+  namespace: default
+spec:
+  replicas: {{ .Values.cust3.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.cust3.appName }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.cust3.appName }}
+    spec:
+      containers:
+      - image: {{ .Values.cust3.image }}:{{.Values.cust3.imageVersion}}
+        imagePullPolicy: Always
+        name: {{ .Values.imageName }}

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:  
+  name: {{ .Values.cust3.serviceName }}
+spec:
+  selector:    
+    app: {{ .Values.cust3.appName }}
+  type: NodePort
+  ports:  
+  - name: http
+    port: 80
+    targetPort: 80
+    nodePort: {{ .Values.cust3.serviceNodePort }}
+    protocol: TCP

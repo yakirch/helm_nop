@@ -1,0 +1,30 @@
+# Default values for eksdemo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Release-wide Values
+
+imageName: nopcommerce
+
+# Service / deployment Specific Values
+cust1:
+  image: yakirhalili/nop_commerce_cust1
+  imageVersion: 1.0.0.0
+  serviceNodePort: 30036
+  appName: nop-commerce-cust1
+  serviceName: nop-commerce-cust1-service
+  replicas: 2
+cust2:
+  image: yakirhalili/nop_commerce_cust2
+  imageVersion: 1.0.0.0
+  serviceNodePort: 30037
+  appName: nop-commerce-cust2
+  serviceName: nop-commerce-cust2-service
+  replicas: 2
+cust3:
+  image: yakirhalili/nop_commerce_cust3
+  imageVersion: 1.0.0.0
+  serviceNodePort: 30038
+  appName: nop-commerce-cust3
+  serviceName: nop-commerce-cust3-service
+  replicas: 2
